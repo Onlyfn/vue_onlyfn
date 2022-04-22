@@ -107,5 +107,13 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/PanJiaChen/vue-element-admin.git"
+  },
+  "rules": {
+  	"generator-star-spacing": "off",
+  	"no-tabs":"off",
+  	"no-unused-vars":"off",
+  	"no-console":"off",
+  	"no-irregular-whitespace":"off",
+  	"no-debugger": "off"
   }
 }

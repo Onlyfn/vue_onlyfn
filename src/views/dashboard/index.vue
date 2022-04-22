@@ -1,5 +1,10 @@
 <template>
   <div class="dashboard-container">
+    <div>
+      <el-tag v-permission="['admin']">admin</el-tag>
+      <el-tag v-permission="['editor']">editor</el-tag>
+      <el-tag v-permission="['admin','editor']">all</el-tag>
+    </div>
     <component :is="currentRole" />
   </div>
 </template>
@@ -8,9 +13,11 @@
 import { mapGetters } from 'vuex'
 import adminDashboard from './admin'
 import editorDashboard from './editor'
+import permission from '@/directive/permission/index.js'
 
 export default {
   name: 'Dashboard',
+  directives: { permission },
   components: { adminDashboard, editorDashboard },
   data() {
     return {
