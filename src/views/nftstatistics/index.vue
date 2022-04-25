@@ -1,5 +1,7 @@
 <template>
   <div class="app-container">
+    <h3>{{name}}</h3>
+    <button @click="getname">按钮</button>
     <div class="filter-container">
       <el-input v-model="listQuery.title" placeholder="Title" style="width: 200px;" class="filter-item" @keyup.enter.native="handleFilter" />
       <el-select v-model="listQuery.importance" placeholder="Imp" clearable style="width: 90px" class="filter-item">
@@ -164,8 +166,12 @@ const calendarTypeKeyValue = calendarTypeOptions.reduce((acc, cur) => {
   acc[cur.key] = cur.display_name
   return acc
 }, {})
-
+import {mapState,mapMutations} from 'vuex'
 export default {
+  computed:{
+    ...mapState('nftstatistics',['name']) //子仓库获取
+    // ...mapState(['name']) //主仓库获取
+  },
   name: 'ComplexTable',
   components: { Pagination },
   directives: { waves },
@@ -228,8 +234,10 @@ export default {
   },
   created() {
     this.getList()
+    // this.fetchData()
   },
   methods: {
+    ...mapMutations('nftstatistics',['getname']),
     getList() {
       this.listLoading = false
       // this.listLoading = true
